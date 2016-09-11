@@ -1,0 +1,13 @@
+实现了页面之间的跳转与传值。
+跳转方法：
+（1）直接拖动利用segue，传值重写preparesegue方法，利用segue.detinationViewcontroller获得要跳转的实例，利用属性传值
+（2）不拖动组件，直接连接两个vc，利用performSegueWithIdentifier(String, sender: self)实现跳转，重写preparesegue实现传值
+（3）不用segue，利用
+		let sb = UIStoryboard(name:"Main",bundle: nil)
+        
+        	let view = sb.instantiateViewControllerWithIdentifier("123") as! nextViewController
+		self.presentViewController(view, animated: true, completion: {}
+来实现页面的跳转，以及属性的传值
+
+利用委托代理模式实现回传值：
+B视图拥有协议，A视图实现该协议并把B视图的协议设为自己，B视图返回到A视图时，执行协议的方法，产生A将方法委托给B执行的感觉来实现值的回传。
